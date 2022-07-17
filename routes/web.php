@@ -15,37 +15,26 @@
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
 
     Route::get('/', function () {
-
         return view('admin.index');
     });
-
-    Route::resource('barang', 'BarangController');
-    Route::resource('bahan', 'BahanController');
-    Route::resource('returpenjualan', 'ReturPenjualanController');
-    Route::post('/prosesret', 'ProsesReturController@proses')->name('prosesret');
-    Route::get('/spb', 'ReturPenjualanController@spb')->name('spb');
-    Route::resource('spbproduksi', 'SpbProduksiController');
+    Route::resource('users', 'UserController');
+    Route::resource('maintenances', 'MaintenanceController');
+    Route::resource('reports', 'ReportController');
 });
 
-Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], function() {
+Route::group(['prefix' => 'itsupport', 'middleware' => ['auth', 'role:itsupport']], function() {
 
     Route::get('/', function () {
         return view('ppic.indux');
     });
-    Route::put('/prosesret/process/{id}', 'ProsesReturController@prosesacc')->name('prosesretacc');
-    Route::put('/prosesret/decline/{id}', 'ProsesReturController@prosesdec')->name('prosesretdec');
-    Route::put('/prosesret/data/{id}', 'ProsesReturController@data')->name('data');
-    Route::get('/spk', 'ProsesReturController@spk')->name('spk');
-    Route::resource('prosesretur', 'ProsesReturController');
-    Route::resource('spkproduksi', 'SpkProduksiController');
+   
 });
 
-Route::group(['prefix' => 'produksi', 'middleware' => ['auth', 'role:produksi']], function() {
+Route::group(['prefix' => 'direktur', 'middleware' => ['auth', 'role:direktur']], function() {
 
     Route::get('/', function () {
         return view('produksis.index');
     });
-    Route::get('/spbspk', 'SpbSpkController@all')->name('spbspk');
 });
 
 

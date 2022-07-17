@@ -17,11 +17,25 @@
                 <ul id="sidebarnav">
                     @if (Auth::user()->role->name == 'administrator')
                     <li class="nav-small-cap">PERSONAL</li>
-                        {{-- <li>
+                        <li>
                         <a class="" href="{{ url('/admin')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                        </li> --}}
+                        </li>
 
                         <li>
+                            <a class="" href="{{ route('users.index') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Account</span></a>
+                        </li>
+
+                        <li>
+                            <a class="" href="{{ route('maintenances.index') }}" aria-expanded="false"><i class="mdi mdi-refresh"></i><span class="hide-menu">Maintenance</span></a>
+                        </li>
+
+                        <li>
+                            <a class="" href="{{ route('reports.index') }}" aria-expanded="false"><i class="mdi mdi-book-variant"></i><span class="hide-menu">Report</span></a>
+                        </li>
+
+
+
+                        {{-- <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
@@ -29,7 +43,7 @@
                                 <li><a href="{{ route('returpenjualan.index') }}">Data Retur Penjualan</a></li>
                                 <li><a href="{{ route('spb') }}">Data SPB</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         {{-- <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>
                         <li><a href="{{ route('keluar') }}"><i class="mdi mdi-checkbox-multiple-marked-outline"></i>Barang Keluar</a></li> --}}
 
