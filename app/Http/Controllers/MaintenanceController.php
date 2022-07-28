@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Maintenance;
 use Carbon\Carbon;
+use Auth;
 
 class MaintenanceController extends Controller
 {
@@ -42,10 +43,19 @@ class MaintenanceController extends Controller
             'created_at' => $request->created_at,
             'no' => $request->no,
             'name' => $request->name,
-            'perihal' => $request->perihal
+            'perihal' => $request->perihal,
+            'user_id' => Auth::user()->id,
         ]);
-
-        return redirect()->route('maintenances.index');
+        if (Auth::user()->role->name == 'administrator') {
+            return redirect()->route('maintenances.index');
+            # code...
+        } elseif(Auth::user()->role->name == 'direktur') {
+            # code...
+            return redirect()->route('direkturmaintenances.index');
+        } else {
+            return redirect()->route('itsupportmaintenances.index');
+        }
+        
     }
 
     /**
@@ -88,9 +98,44 @@ class MaintenanceController extends Controller
         $update->perihal = $request->perihal;
         $update->save();
 
-        return redirect()->route('maintenances.index');
+        if (Auth::user()->role->name == 'administrator') {
+            return redirect()->route('maintenances.index');
+            # code...
+        } elseif(Auth::user()->role->name == 'direktur') {
+            # code...
+            return redirect()->route('direkturmaintenances.index');
+        } else {
+            return redirect()->route('itsupportmaintenances.index');
+        }
     }
 
+    public function updateda(Request $request, $id)
+    {
+        // dd($request->all(), $id);
+        $update = Maintenance::find($id);
+        $update->status = $request->status;
+        $update->save();
+
+        if (Auth::user()->role->name == 'administrator') {
+            return redirect()->route('maintenances.index');
+            # code...
+        } elseif(Auth::user()->role->name == 'direktur') {
+            # code...
+            return redirect()->route('direkturmaintenances.index');
+        } else {
+            return redirect()->route('itsupportmaintenances.index');
+        }
+    }
+
+    public function updateapp(Request $request, $id)
+    {
+        $update = Maintenance::find($id);
+        $update->keterangan = $request->keterangan;
+        $update->status_end = $request->status_end;
+        $update->save();
+        
+        return redirect()->route('itsupportmaintenances.index');
+    }
     /**
      * Remove the specified resource from storage.
      *

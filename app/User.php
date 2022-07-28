@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function maintenances()
+    {
+        return $this->hasMany(Maintenance::class);
+    }
+
     public function hasRole($role)
     {
         if ($this->role()->where('name', $role)->first()) {

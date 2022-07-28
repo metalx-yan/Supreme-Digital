@@ -17,6 +17,7 @@ class CreateReportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('no');
             $table->string('perihal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

@@ -39,12 +39,12 @@ class ReportController extends Controller
     {
         // dd($request->all());
         Report::create([
-            'created_at' => $request->created_at,
+            'tanggal' => $request->created_at,
             'no' => $request->no,
             'perihal' => $request->perihal
         ]);
 
-        return redirect()->route('reports.index');
+        return redirect()->route('itsupportreports.index');
     }
 
     /**
@@ -83,12 +83,12 @@ class ReportController extends Controller
     public function update(Request $request, $id)
     {
         $update = Report::find($id);
-        $update->created_at = $request->created_at;
+        $update->tanggal = $request->created_at;
         $update->no = $request->no;
         $update->perihal = $request->perihal;
         $update->save();
 
-        return redirect()->route('reports.index');
+        return redirect()->route('itsupportreports.index');
     }
 
     /**

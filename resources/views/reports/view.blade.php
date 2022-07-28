@@ -52,7 +52,7 @@
                 </div>
            </div>
            <br>
-           <a href="{{ route('reports.index') }}" class="btn btn-warning btn-sm">Back</a>
+           <a href="{{ route('itsupportreports.index') }}" class="btn btn-warning btn-sm">Back</a>
         </div>
     </div>
 </div>

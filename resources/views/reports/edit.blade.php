@@ -18,13 +18,13 @@
 
         </div>
         <div class="card-body">
-            <form action="{{ route('reports.update', $get->id) }}" method="post">
+            <form action="{{ route('itsupportreports.update', $get->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="row">
                     <div class="col-md-3">
                         <label for="">Tanggal</label>
-                        <input type="date" name="created_at" value="{{ Carbon\Carbon::parse($get->created_at)->format('Y-m-d') }}" class="form-control {{ $errors->has('created_at') ? 'is-invalid' : ''}}" required>
+                        <input type="date" name="created_at" value="{{ Carbon\Carbon::parse($get->tanggal)->format('Y-m-d') }}" class="form-control {{ $errors->has('created_at') ? 'is-invalid' : ''}}" required>
                         {!! $errors->first('created_at', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
                     <div class="col-md-3">
@@ -41,7 +41,7 @@
                 </div>
                     <br>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    <a href="{{ route('reports.index') }}" class="btn btn-warning btn-sm">Back</a>
+                    <a href="{{ route('itsupportreports.index') }}" class="btn btn-warning btn-sm">Back</a>
             </form>
         </div>
     </div>

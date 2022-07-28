@@ -50,10 +50,10 @@ class LoginController extends Controller
         if (Auth::user()->role->name == 'administrator') {
             return '/admin';
         }
-        elseif (Auth::user()->role->name == 'ppic') {
-            return '/ppic';
+        elseif (Auth::user()->role->name == 'itsupport') {
+            return '/itsupport';
         } else {
-            return '/produksi';
+            return '/direktur';
         }
     }
 
