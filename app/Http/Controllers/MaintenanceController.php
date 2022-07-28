@@ -127,7 +127,7 @@ class MaintenanceController extends Controller
         }
     }
 
-    public function updateapp(Request $request, $id)
+    public function updateapprove(Request $request, $id)
     {
         $update = Maintenance::find($id);
         $update->keterangan = $request->keterangan;
