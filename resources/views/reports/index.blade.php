@@ -46,10 +46,17 @@
                                 <td>{{ $item->perihal }}</td>
                                 <td>
                                     <div class="row">
-                                        <div class="col-md-1">
-                                            <a href="{{ route('itsupportreports.show', $item->id) }}"
-                                                class="btn btn-secondary btn-sm">View</a>
-                                        </div>
+                                        @if (Auth::user()->role->name == 'direktur')
+                                            <div class="col-md-1">
+                                                <a href="{{ route('direkturreports.show', $item->id) }}"
+                                                    class="btn btn-secondary btn-sm">View</a>
+                                            </div>
+                                        @else
+                                            <div class="col-md-1">
+                                                <a href="{{ route('itsupportreports.show', $item->id) }}"
+                                                    class="btn btn-secondary btn-sm">View</a>
+                                            </div>
+                                        @endif
                                         @if (Auth::user()->role->name != 'direktur')
                                             <div class="col-md-1"></div>
                                             <div class="col-md-2">
@@ -57,7 +64,8 @@
                                                     class="btn btn-warning btn-sm">Edit</a>
                                             </div>
                                             <div class="col-md-2">
-                                                <form action="{{ route('itsupportreports.destroy', $item->id) }}" method="post">
+                                                <form action="{{ route('itsupportreports.destroy', $item->id) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"

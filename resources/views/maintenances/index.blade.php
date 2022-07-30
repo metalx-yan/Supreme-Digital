@@ -140,14 +140,20 @@
                                     <td>
                                         @if ($item->status == 1)
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal">
-                                                Approve
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModaldecline">
-                                                Decline
-                                            </button>
+                                            @if ($item->status_end == 1)
+                                                <button type="button" class="btn btn-success btn-sm">Approve</button>
+                                            @elseif($item->status_end == 2)
+                                                <button type="button" class="btn btn-danger btn-sm">Decline</button>
+                                            @else
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                                    data-target="#exampleModal">
+                                                    Approve
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                    data-target="#exampleModaldecline">
+                                                    Decline
+                                                </button>
+                                            @endif
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1"
@@ -174,7 +180,7 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save
+                                                                <button type="submit" class="btn btn-primary">Save
                                                                     changes</button>
                                                             </div>
                                                         </form>
@@ -205,7 +211,7 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save
+                                                                <button type="submit" class="btn btn-primary">Save
                                                                     changes</button>
                                                             </div>
                                                         </form>

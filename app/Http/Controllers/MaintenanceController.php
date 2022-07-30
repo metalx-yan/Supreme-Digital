@@ -129,6 +129,7 @@ class MaintenanceController extends Controller
 
     public function updateapprove(Request $request, $id)
     {
+        // dd($request->all());
         $update = Maintenance::find($id);
         $update->keterangan = $request->keterangan;
         $update->status_end = $request->status_end;
