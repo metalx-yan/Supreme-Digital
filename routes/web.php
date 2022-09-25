@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('reports', 'ReportController');
 });
 Route::match(['put', 'patch'], '/sendto/{id}','MaintenanceController@updateda')->name('maintenances.updateda');
-Route::match(['put', 'patch'], '/approve/{id}','MaintenanceController@updateapprove')->name('maintenances.updateapprove');
+Route::put('/approve/{id}','MaintenanceController@updateapprove')->name('maintenances.updateapprove');
 
 Route::group(['prefix' => 'itsupport', 'middleware' => ['auth', 'role:itsupport']], function() {
 

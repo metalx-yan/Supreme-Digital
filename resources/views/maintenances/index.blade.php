@@ -146,7 +146,7 @@
                                                 <button type="button" class="btn btn-danger btn-sm">Decline</button>
                                             @else
                                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                    data-target="#exampleModal">
+                                                    data-target="#exampleModal_{{ $item->id }}">
                                                     Approve
                                                 </button>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
@@ -156,7 +156,7 @@
                                             @endif
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            <div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -173,7 +173,7 @@
                                                             @method('PUT')
                                                             <div class="modal-body">
                                                                 <label for="">Keterangan</label>
-
+                                                                <input type="hidden" name="ids" value="{{ $item->id }}">
                                                                 <textarea name="keterangan" id="" cols="30" rows="3" class="form-control"></textarea>
                                                                 <input type="hidden" name="status_end" value="1">
                                                             </div>
