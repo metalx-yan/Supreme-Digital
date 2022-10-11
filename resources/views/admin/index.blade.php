@@ -35,5 +35,65 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="containers"></div>
+            </div>
+        </div>
     </div>
+
+
 @endsection
+
+@section('scripts')
+<script>
+    Highcharts.chart('containers', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'SUPREME DIGITAL CHART'
+    },
+    subtitle: {
+        text: 'Source: ' +
+            'Highchart'
+    },
+    xAxis: {
+        categories: [
+            'Total',
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            useHTML: true,
+            text: 'Chart'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Account',
+        data: [{{ App\User::all()->count() }}]
+
+    }, {
+        name: 'Report',
+        data: [{{ App\Report::all()->count() }}]
+
+    }]
+});
+</script>    
+@endsection
+

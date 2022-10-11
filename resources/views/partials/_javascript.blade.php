@@ -31,4 +31,4 @@
     <!-- ============================================================== -->
     <script src="{{ asset('assets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
     <script src="{{ asset('js/buttons.print.min.js') }}"></script>
-    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
